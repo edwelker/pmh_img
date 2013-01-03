@@ -1,5 +1,8 @@
 Django==1.4.3
-PIL==1.1.7
+Pillow==1.7.8
 django-appconf==0.5
+django-extensions==1.0.2
 django-imagekit==2.0.2
+## FIXME: could not find svn URL in dependency_links for this package:
+flup==1.0.3.dev-20110405
 wsgiref==0.1.2

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmh_anatomy_images>
+<pmh_approved_images>
     {% if images %}
         {% for image in images %}
-            <image orig_filename="{{image.image}}">
+            <image orig_filename="{{image}}">
                 <new_filename>{{image.new_filename}}</new_filename>
+                <terms>{{image.terms}}</terms>
             </image>
         {% endfor %}
     {% else %}
         <error>No approved images found</error>
     {% endif %}
-</pmh_anatomy_images>
+</pmh_approved_images>
