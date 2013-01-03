@@ -1,0 +1,5 @@
+Django==1.4.3
+PIL==1.1.7
+django-appconf==0.5
+django-imagekit==2.0.2
+wsgiref==0.1.2
