@@ -16,8 +16,8 @@ env_name =  os.path.basename(os.path.normpath(os.path.dirname(__file__)))
 
 venv_loc = '/home/welkere/env/pmh_img'
 activate_loc = '/home/welkere/env/pmh_img/bin/activate_this.py'
-parent_loc = '/home/welkere/python'
-pmh_img_loc = '/home/welkere/python/pmh_img'
+parent_loc = '/home/welkere/python/pmh_img'
+pmh_img_loc = '/home/welkere/python/pmh_img/pmh_img'
 settings = 'pmh_img.settings'
 
 os.environ['VIRTUAL_ENV'] = venv_loc 
