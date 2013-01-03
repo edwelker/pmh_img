@@ -2,7 +2,7 @@
 <pmh_anatomy_images>
     {% if images %}
         {% for image in images %}
-            <image orig_filename="{{image.original_filename}}">
+            <image orig_filename="{{image.image}}">
                 <new_filename>{{image.new_filename}}</new_filename>
             </image>
         {% endfor %}
