@@ -3,7 +3,7 @@
     {% if images %}
         {% for image in images %}
             <image orig_filename="{{image}}">
-                <new_filename>{{image.new_filename}}</new_filename>
+                <title>{{image.title}}</title>
                 <terms>{{image.terms}}</terms>
             </image>
         {% endfor %}
