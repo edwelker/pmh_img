@@ -13,7 +13,9 @@ class Image(models.Model):
     image = models.ImageField(upload_to='originals')
 
     included = models.BooleanField(help_text="Check if the image should be included in PMH")
-    new_filename = models.CharField(max_length=100, blank=True, null=True, help_text="The desired new filename [don't include the '.jpg']")
+    title = models.CharField(max_length=100, blank=True, null=True, help_text="The image's title")
+
+    caption = models.TextField(blank=True)
 
     terms = models.CharField(max_length=200, blank=True, help_text="A comma separated list of terms this image belongs to.")
     
