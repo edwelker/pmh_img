@@ -13,11 +13,13 @@ class Image(models.Model):
     image = models.ImageField(upload_to='originals')
 
     included = models.BooleanField(help_text="Check if the image should be included in PMH")
-    title = models.CharField(max_length=100, blank=True, null=True, help_text="The image's title")
 
+    alt_text = models.TextField(blank=True, help_text="A short caption representing the image that will go in the img's 'alt' attribute.")
     caption = models.TextField(blank=True)
+    source_url = models.URLField(blank=True, help_text="URL to the original source of the image.")
+    orig_figure_source = models.TextField(blank=True, verbose_name="Original Figure Source", help_text="The credit/source line required by the original image owner.")
+    pmh_figure_source = models.TextField(blank=True, verbose_name="PMH Figure Source text", help_text="A different version of the credit/source line that we want to display on the PMH topic page itself.")
 
-    terms = models.CharField(max_length=200, blank=True, help_text="A comma separated list of terms this image belongs to.")
     
     #The alternate sizes of the images
     medium_thumb = ImageSpecField([ResizeToFit(width=300, height=400)], image_field='image', cache_to='medium_thumbs')
@@ -45,8 +47,19 @@ class Image(models.Model):
     med_url.short_description = "Medium"
     med_url.allow_tags = True
 
+    def complete(self):
+        return all((self.orig_figure_source, self.pmh_figure_source, self.source_url, self.alt_text))
+
+    complete.short_description = 'All fields complete'
+
     def __unicode__(self):
         return u"%s" % self.image.url.split('/')[-1]
 
     class Meta:
         ordering = ['-included']
+
+
+class TopicPage(models.Model):
+    topic = models.CharField(max_length=150,blank=True, help_text="The name of the topic")
+    mesh_codes = models.CharField(max_length=200, blank=True, help_text="A comma separated list of terms this image belongs to.")
+    image = models.ForeignKey(Image) 

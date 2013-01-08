@@ -3,8 +3,13 @@
     {% if images %}
         {% for image in images %}
             <image orig_filename="{{image}}">
-                <title>{{image.title}}</title>
-                <terms>{{image.terms}}</terms>
+                <orig_figure_source>{{image.orig_figure_source}}</orig_figure_source>
+                <pmh_figure_source>{{image.pmh_figure_source}}</pmh_figure_source>
+                <source_url>{{image.source_url}}</source_url>
+                <alt_text>{{image.alt_text}}</alt_text>
+                {% if image.caption %}
+                <caption>{{image.caption}}</caption>
+                {% endif %}
             </image>
         {% endfor %}
     {% else %}

@@ -1,12 +1,23 @@
 from django.contrib import admin
-from images.models import Image
+from images.models import Image, TopicPage
+
+class TopicPageInline(admin.TabularInline):
+    model = TopicPage 
+    extra = 3
+    can_delete = False
 
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ('title', 'img_thumb', 'terms', 'orig_filename', 'med_url', 'included')
-    list_display_links = ('title', 'img_thumb',)
-    list_editable = ('included', 'terms')
-    search_fields = ('title', 'orig_filename', 'terms')
+    list_display = ('included', 'img_thumb', 'orig_filename', 'med_url', 'complete')
+    list_display_links = ('img_thumb',)
+    list_editable = ('included',)
+    search_fields = ('orig_filename',)
     list_filter = ('included',)
+
+    #fieldsets = [
+    #    (None, {'fields': ['image', 'included']}),
+    #    ('Metadata', {'fields': ['orig_figure_source', 'pmh_figure_source', 'source_url', 'alt_text', 'caption']})
+    #]
+    inlines = [TopicPageInline]
 
 
 admin.site.register(Image, ImageAdmin)
