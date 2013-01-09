@@ -35,6 +35,10 @@ for el in xml.getroot():
             if child.tag == 'related-terms':
                 related_terms = etree.tostring(child)
 
+        vol_eles = el.xpath('./*[starts-with( name(), "vol_")]')
+        vol_eles_text = [etree.tostring(x) for x in vol_eles]
+        blob = ''.join(vol_eles_text)
+
     #print "%s -  %s\n%s" % (image, pmhid, related_terms)
 
-    image_model = Image.objects.create(image=image, caption=caption, alt_text=alt_text, name=name, pmhid=pmhid)
+    image_model = Image.objects.create(image=image, caption=caption, alt_text=alt_text, name=name, pmhid=pmhid, blob=blob)

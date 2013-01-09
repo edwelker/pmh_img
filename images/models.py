@@ -12,7 +12,7 @@ def generate_link(image):
 class Image(models.Model):
     image = models.ImageField(upload_to='originals')
 
-    name = models.CharField(blank=True, unique=True, max_length=150, help_text="The new PMH name of the image.", verbose_name="PMH filename")
+    name = models.CharField(blank=True, unique=True, max_length=150, help_text="The new PMH name of the image, keeping '.jpg'.", verbose_name="PMH filename")
     pmhid = models.CharField(blank=True, max_length=40)
 
     included = models.BooleanField(help_text="Check if the image should be included in PMH", verbose_name='Include?')
@@ -23,7 +23,8 @@ class Image(models.Model):
     orig_figure_source = models.TextField(blank=True, verbose_name="Original Figure Source", help_text="The credit/source line required by the original image owner.")
     pmh_figure_source = models.TextField(blank=True, verbose_name="PMH Figure Source text", help_text="A different version of the credit/source line that we want to display on the PMH topic page itself.")
 
-    
+    blob = models.TextField()
+
     #The alternate sizes of the images
     medium_thumb = ImageSpecField([ResizeToFit(width=300, height=400)], image_field='image', cache_to='medium_thumbs')
     thumbnail = ImageSpecField([ResizeToFill(130, 130)], image_field='image', cache_to='thumbnails')

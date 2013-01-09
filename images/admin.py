@@ -9,9 +9,9 @@ class TopicPageInline(admin.TabularInline):
     can_delete = False
 
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ('included', 'img_thumb', 'name', 'orig_filename', 'med_url', 'complete')
-    list_display_links = ('img_thumb', 'name', 'complete')
-    list_editable = ('included',)
+    list_display = ('included', 'name', 'img_thumb', 'orig_filename', 'med_url', 'complete')
+    list_display_links = ('img_thumb', 'complete')
+    list_editable = ('included', 'name')
     list_per_page = 10
     search_fields = ('orig_filename',)
     list_filter = ('included',)
@@ -20,10 +20,10 @@ class ImageAdmin(admin.ModelAdmin):
         models.TextField: {'widget': Textarea(attrs={'rows':4, 'cols':80})},
     }
 
-    #fieldsets = [
-    #    (None, {'fields': ['image', 'included']}),
-    #    ('Metadata', {'fields': ['orig_figure_source', 'pmh_figure_source', 'source_url', 'alt_text', 'caption']})
-    #]
+    fieldsets = [
+        (None, {'fields': ['image', 'included']}),
+        ('Metadata', {'fields': ['name', 'alt_text', 'caption', 'source_url', 'orig_figure_source', 'pmh_figure_source']})
+    ]
     inlines = [TopicPageInline]
 
 
