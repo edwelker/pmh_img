@@ -12,10 +12,17 @@
                 {% if image.caption %}
                     <caption>{{image.caption}}</caption>
                 {% endif %}
-                <pmhid>{{image.pmhid}}</pmhid>
-                <other_fields>
-                    {{image.blob|safe}}
-                </other_fields>
+                {% if image.related_terms %}
+                    {{image.related_terms|safe}}
+                {% endif %}
+                {% if image.pmhid %}
+                    <pmhid>{{image.pmhid}}</pmhid>
+                {% endif %}
+                {% if image.blob %}
+                    <additional>
+                        {{image.blob|safe}}
+                    </additional>
+                {% endif %}
             </image>
         {% endfor %}
     {% else %}

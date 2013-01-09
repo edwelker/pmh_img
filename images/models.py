@@ -23,7 +23,10 @@ class Image(models.Model):
     orig_figure_source = models.TextField(blank=True, verbose_name="Original Figure Source", help_text="The credit/source line required by the original image owner.")
     pmh_figure_source = models.TextField(blank=True, verbose_name="PMH Figure Source text", help_text="A different version of the credit/source line that we want to display on the PMH topic page itself.")
 
+    #all of the extra XML information (starting with vol_ for PDQ) that should not be displayed, but be output later.
     blob = models.TextField()
+
+    related_terms = models.TextField()
 
     #The alternate sizes of the images
     medium_thumb = ImageSpecField([ResizeToFit(width=300, height=400)], image_field='image', cache_to='medium_thumbs')
