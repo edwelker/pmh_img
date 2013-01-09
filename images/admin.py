@@ -7,9 +7,10 @@ class TopicPageInline(admin.TabularInline):
     can_delete = False
 
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ('included', 'img_thumb', 'orig_filename', 'med_url', 'complete')
-    list_display_links = ('img_thumb',)
+    list_display = ('included', 'img_thumb', 'name', 'orig_filename', 'med_url', 'complete')
+    list_display_links = ('img_thumb', 'name', 'complete')
     list_editable = ('included',)
+    list_per_page = 10
     search_fields = ('orig_filename',)
     list_filter = ('included',)
 

@@ -12,7 +12,10 @@ def generate_link(image):
 class Image(models.Model):
     image = models.ImageField(upload_to='originals')
 
-    included = models.BooleanField(help_text="Check if the image should be included in PMH")
+    name = models.CharField(blank=True, unique=True, max_length=150, help_text="The new PMH name of the image.", verbose_name="PMH filename")
+    pmhid = models.CharField(blank=True, max_length=40)
+
+    included = models.BooleanField(help_text="Check if the image should be included in PMH", verbose_name='Include?')
 
     alt_text = models.TextField(blank=True, help_text="A short caption representing the image that will go in the img's 'alt' attribute.")
     caption = models.TextField(blank=True)
@@ -38,19 +41,19 @@ class Image(models.Model):
     def orig_filename(self):
         return generate_link(self.image)
 
-    orig_filename.short_description = "Original"
+    orig_filename.short_description = "Original (full size)"
     orig_filename.allow_tags = True
 
     def med_url(self):
         return generate_link(self.medium_thumb) 
     
-    med_url.short_description = "Medium"
+    med_url.short_description = "Medium Thumbnail"
     med_url.allow_tags = True
 
     def complete(self):
         return all((self.orig_figure_source, self.pmh_figure_source, self.source_url, self.alt_text))
 
-    complete.short_description = 'All fields complete'
+    complete.short_description = 'Are all fields complete?'
 
     def __unicode__(self):
         return u"%s" % self.image.url.split('/')[-1]
