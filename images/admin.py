@@ -1,5 +1,7 @@
 from django.contrib import admin
 from images.models import Image, TopicPage
+from django.forms import Textarea
+from django.db import models
 
 class TopicPageInline(admin.TabularInline):
     model = TopicPage 
@@ -13,6 +15,10 @@ class ImageAdmin(admin.ModelAdmin):
     list_per_page = 10
     search_fields = ('orig_filename',)
     list_filter = ('included',)
+
+    formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows':4, 'cols':80})},
+    }
 
     #fieldsets = [
     #    (None, {'fields': ['image', 'included']}),
