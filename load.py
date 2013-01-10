@@ -12,7 +12,6 @@ from lxml import etree
 parser = etree.XMLParser(ns_clean=True, recover=True)
 xml = etree.parse('import/pdq.xml', parser)
 
-
 for el in xml.getroot():    
     image = name = pmhid = caption = alt_text = related_terms = None
     
@@ -41,4 +40,4 @@ for el in xml.getroot():
 
     #print "%s -  %s\n%s" % (image, pmhid, related_terms)
 
-    image_model = Image.objects.create(image=image, caption=caption, alt_text=alt_text, name=name, pmhid=pmhid, related_terms=related_terms, blob=blob)
+    image_model = Image.objects.create(image=image, caption=caption, alt_text=alt_text, name=name, pmhid=pmhid, related_terms=related_terms, blob=blob, name_of_source="PDQ")

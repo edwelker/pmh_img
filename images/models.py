@@ -23,6 +23,8 @@ class Image(models.Model):
     orig_figure_source = models.TextField(blank=True, verbose_name="Original Figure Source", help_text="The credit/source line required by the original image owner.")
     pmh_figure_source = models.TextField(blank=True, verbose_name="PMH Figure Source text", help_text="A different version of the credit/source line that we want to display on the PMH topic page itself.")
 
+    name_of_source = models.CharField(max_length=50, help_text="The name of the place the image came from.")
+
     #all of the extra XML information (starting with vol_ for PDQ) that should not be displayed, but be output later.
     blob = models.TextField()
 
