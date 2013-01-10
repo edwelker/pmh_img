@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<NIA>
+<row>
+    <ID_number></ID_number>
+    <Filename>01_brainside_lg</Filename>
+    <URL_for_original>http://www.nia.nih.gov/alzheimers/scientific-images</URL_for_original>
+    <Title>Side View of Brain </Title>
+    <Display_credit_line>National Institutes of Health</Display_credit_line>
+    <Credit_Line>NIH, National Institute on Aging</Credit_Line>
+    <Resolution>1.2 MB | 300 dpi</Resolution>
+</row>
+<row>
+    <ID_number></ID_number>
+    <Filename>01_brainfront_lg</Filename>
+    <URL_for_original>http://www.nia.nih.gov/alzheimers/scientific-images</URL_for_original>
+    <Title>Front View of Brain </Title>
+    <Display_credit_line>National Institutes of Health</Display_credit_line>
+    <Credit_Line>NIH, National Institute on Aging</Credit_Line>
+    <Resolution>227 KB | 300 dpi</Resolution>
+</row>
+<row>
+    <ID_number></ID_number>
+    <Filename>02_healthybrain_lg</Filename>
+    <URL_for_original>http://www.nia.nih.gov/alzheimers/scientific-images</URL_for_original>
+    <Title>Healthy Brain and Severe AD Brain</Title>
+    <Display_credit_line>National Institutes of Health</Display_credit_line>
+    <Credit_Line>NIH, National Institute on Aging</Credit_Line>
+    <Resolution>656 KB | 300 dpi</Resolution>
+</row>
+<row>
+    <ID_number></ID_number>
+    <Filename>02_severead_lg</Filename>
+    <URL_for_original>http://www.nia.nih.gov/alzheimers/scientific-images</URL_for_original>
+    <Title>Severe AD</Title>
+    <Display_credit_line>National Institutes of Health</Display_credit_line>
+    <Credit_Line>NIH, National Institute on Aging</Credit_Line>
+    <Resolution>945 KB | 300 dpi</Resolution>
+</row>
+</NIA>
