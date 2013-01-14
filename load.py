@@ -40,4 +40,7 @@ for el in xml.getroot():
 
     #print "%s -  %s\n%s" % (image, pmhid, related_terms)
 
-    image_model = Image.objects.create(image=image, caption=caption, alt_text=alt_text, name=name, pmhid=pmhid, related_terms=related_terms, blob=blob, name_of_source="PDQ")
+    image_model = Image.objects.create(image=image, caption=caption, alt_text=alt_text, 
+                  name=name, pmhid=pmhid, related_terms=related_terms, blob=blob, 
+                  name_of_source="PDQ", pmh_figure_source='National Institutes of Health')
+

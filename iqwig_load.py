@@ -12,14 +12,13 @@ from lxml import etree
 parser = etree.XMLParser()
 xml = etree.parse('import/iqwig.xml')
 
-center = 'IQWiG'
-
 for el in xml.getroot():
     image = name = pmhid = pmh_figure_source = None
     alt_text = caption = ''
 
     if el.tag == 'image':
         image = 'originals/iqwig/' + el.get('name')
+        name = el.get('name')
         for child in el:
             if child.tag == 'pmhid':
                 pmhid = child.text.encode('utf8')
@@ -30,4 +29,8 @@ for el in xml.getroot():
                 if child.text:  
                     alt_text = child.text.encode('utf8')
 
-    print "%s - %s - %s" % (center, pmhid, alt_text)
+    #print "%s - %s - %s" % (center, pmhid, alt_text)
+
+    image_model = Image.objects.create(image=image, caption=caption, alt_text=alt_text,
+                  name = name, pmhid=pmhid, name_of_source='IQWiG',
+                  pmh_figure_source='Institute for Quality and Efficiency in Health Care')
