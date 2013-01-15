@@ -13,7 +13,7 @@ class ImageAdmin(admin.ModelAdmin):
     list_display_links = ('img_thumb', 'complete')
     list_editable = ('included', 'name')
     list_per_page = 10
-    search_fields = ('orig_filename',)
+    search_fields = ('image', 'name', 'caption', 'alt_text')
     list_filter = ('included',)
 
     formfield_overrides = {
