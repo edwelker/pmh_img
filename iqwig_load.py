@@ -29,8 +29,17 @@ for el in xml.getroot():
                 if child.text:  
                     alt_text = child.text.encode('utf8')
 
-    #print "%s - %s - %s" % (center, pmhid, alt_text)
+    #print "%s - %s - %s - %s\n" % (name, pmhid, alt_text, caption)
 
-    image_model = Image.objects.create(image=image, caption=caption, alt_text=alt_text,
-                  name = name, pmhid=pmhid, name_of_source='IQWiG',
-                  pmh_figure_source='Institute for Quality and Efficiency in Health Care')
+    try:
+        img = Image.objects.get(image=image)
+
+        img.pmhid += ', ' + pmhid
+        img.caption += ', ' + caption
+        img.alt_text += ', ' + alt_text
+        img.save()
+
+    except Image.DoesNotExist:
+        image_model = Image.objects.create(image=image, caption=caption, alt_text=alt_text,
+                      name = name, pmhid=pmhid, name_of_source='IQWiG',
+                      pmh_figure_source='Institute for Quality and Efficiency in Health Care')
