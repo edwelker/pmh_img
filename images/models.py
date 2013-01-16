@@ -13,7 +13,7 @@ class Image(models.Model):
     image = models.ImageField(upload_to='originals')
 
     name = models.CharField(blank=True, unique=True, max_length=150, help_text="The new PMH name of the image, keeping '.jpg'.", verbose_name="PMH filename")
-    pmhid = models.CharField(blank=True, max_length=40)
+    pmhid = models.CharField(blank=True, max_length=40, help_text="Associated PMHID's separated by | symbols.")
 
     included = models.BooleanField(help_text="Check if the image should be included in PMH", verbose_name='Include?')
 
