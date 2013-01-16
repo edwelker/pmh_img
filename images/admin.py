@@ -22,7 +22,7 @@ class ImageAdmin(admin.ModelAdmin):
 
     fieldsets = [
         (None, {'fields': ['image', 'included']}),
-        ('Metadata', {'fields': ['name', 'alt_text', 'caption', 'source_url', 'orig_figure_source', 'pmh_figure_source']})
+        ('Metadata', {'fields': ['name', 'alt_text', 'caption', 'pmh_caption', 'source_url', 'orig_figure_source', 'pmh_figure_source']})
     ]
     inlines = [TopicPageInline]
 

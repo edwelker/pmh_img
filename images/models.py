@@ -19,6 +19,7 @@ class Image(models.Model):
 
     alt_text = models.TextField(blank=True, help_text="A short caption representing the image that will go in the img's 'alt' attribute.")
     caption = models.TextField(blank=True)
+    pmh_caption = models.TextField(blank=True, help_text="The PMH shortened version of the image caption.")
     source_url = models.URLField(blank=True, help_text="URL to the original source of the image.")
     orig_figure_source = models.TextField(blank=True, verbose_name="Original Figure Source", help_text="The credit/source line required by the original image owner.")
     pmh_figure_source = models.TextField(blank=True, verbose_name="PMH Figure Source text", help_text="A different version of the credit/source line that we want to display on the PMH topic page itself.")
@@ -57,7 +58,7 @@ class Image(models.Model):
     med_url.allow_tags = True
 
     def complete(self):
-        return all((self.orig_figure_source, self.pmh_figure_source, self.source_url, self.alt_text))
+        return all((self.orig_figure_source, self.pmh_figure_source, self.source_url, self.alt_text, self.pmh_caption))
 
     complete.short_description = 'Are all fields complete?'
 
