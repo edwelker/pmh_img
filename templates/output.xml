@@ -13,7 +13,7 @@
                     <caption>{{image.caption}}</caption>
                 {% endif %}
                 {% if image.related_terms %}
-                    {{image.related_terms|safe}}
+                    <related_terms>{{image.related_terms|safe}}</related_terms>
                 {% endif %}
                 {% if image.pmhid %}
                     <pmhid>{{image.pmhid}}</pmhid>
