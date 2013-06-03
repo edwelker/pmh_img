@@ -56,24 +56,21 @@ col_names = ['Term',
             'Reldoc-see-also',
             'Reldoc-see-also sources',
             'MeSH for related conditions',
-            'Reldoc-glossary-ID',
-            'Reldoc-glossary',
-            'Reldoc-glossary source',
-            'URL for Reldoc-glossary source']
+            'MeSH for terms to know']
 
 
 for idx, name in enumerate(col_names):
     col = get_column_letter((idx+1))
     ws.cell('%s%s' % (col, '1')).value = name
 
-topics = TopicPage.objects.order_by(topic__iexact)
+topics = TopicPage.objects.order_by('topic')
 for idx, topic in enumerate(topics):
-    #first row is already headers
-    row = idx + 1
+    #first row is already headers, and w/0 index
+    row = idx + 2
     ws.cell('A%s' % (row,)).value = topic.topic
     ws.cell('B%s' % (row,)).value = topic.mesh_codes
 
-    ws.cell('C%s' % (row,)).value = topic.image.image
+    ws.cell('C%s' % (row,)).value = topic.image.image.name
     ws.cell('D%s' % (row,)).value = topic.image.name
     ws.cell('E%s' % (row,)).value = topic.image.orig_figure_source
     ws.cell('F%s' % (row,)).value = topic.image.pmh_figure_source
