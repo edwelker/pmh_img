@@ -1,0 +1,9 @@
+### Steps to upload the latest set of images ###
+
+1. Unarchive the 'HealthTopics.tar.gz file'; ==> HealthTopics directory which has latest images. Place this directory in '/home/welkere/python/pmh_img/media/originals/'
+
+2. Place the 'HT_load.py' script in '/home/welkere/python/pmh_img/' .
+
+3. Place 'nhlbi-meta.xml' file in '/home/welkere/python/pmh_img/import/'
+
+4. There should be 100 images which are uploaded. There would be a message telling you how many of the images are uploaded with (&without) metadata.
